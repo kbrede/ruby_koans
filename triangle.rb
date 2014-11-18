@@ -14,11 +14,19 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  if (a == 0) && (b == 0) && (c == 0)
+    raise TriangleError, "Can't have a triangle with a 0 side length"
+  elsif (a < 0) || (b < 0) || (c < 0)
+    raise TriangleError, "Can't have a side with a negative number"
+  elsif (a + b <= c) || (a + c <= b) ||  (b + c <= a)
+    raise TriangleError, "Not a triangle"
+  end
+
   if (a == b) && (b == c)
     :equilateral
   elsif (a == b) || (a == c) || (b == c)
     :isosceles
-  else 
+  else
     :scalene
   end
 end
